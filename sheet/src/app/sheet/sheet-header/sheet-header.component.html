@@ -1,0 +1,20 @@
+<div class="flex gap-4">
+    <div class="flex flex-col">
+        <div>
+            <div class="flex gap-1">
+                <app-basic-information [value]="sheet.basicInformation.level.toString()">Level</app-basic-information>
+                <app-basic-information [value]="sheet.basicInformation.xp.toString()">XP</app-basic-information>
+                <app-basic-information [value]="sheet.basicInformation.characterName">Character Name</app-basic-information>
+            </div>
+            <div>
+                Ability scores
+            </div>
+        </div>
+        <div>
+            Ac hp etc...
+        </div>
+    </div>
+    <div>
+        conditions
+    </div>
+</div>
