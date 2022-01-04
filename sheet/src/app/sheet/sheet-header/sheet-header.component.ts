@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Sheet } from 'src/app/models/sheet/sheet.model';
-import { SheetService } from 'src/app/services/sheet.service';
+import { IFormGroup } from '@rxweb/types';
+import { IAbstractControl } from '@rxweb/types/reactive-form/i-abstract-control';
+import { BasicInformation, Sheet } from 'src/app/models/sheet/sheet.model';
 
 @Component({
   selector: 'app-sheet-header',
@@ -10,11 +11,14 @@ import { SheetService } from 'src/app/services/sheet.service';
 export class SheetHeaderComponent implements OnInit {
 
   @Input()
-  sheet!: Sheet;
+  basicInformation!: IAbstractControl<BasicInformation, Sheet>;
 
-  constructor(private sheetService: SheetService) { }
+  basicInformationFormGroup!: IFormGroup<BasicInformation>;
+
+  constructor() { }
 
   ngOnInit(): void {
+    this.basicInformationFormGroup = this.basicInformation as IFormGroup<BasicInformation>;
   }
 
 }

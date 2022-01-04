@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { IFormControl } from '@rxweb/types';
+import { IAbstractControl } from '@rxweb/types/reactive-form/i-abstract-control';
 
 @Component({
   selector: 'app-basic-information',
@@ -7,12 +9,28 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BasicInformationComponent implements OnInit {
 
-  @Input()
-  value: string = '';
+  @ViewChild('value')
+  value!: ElementRef;
 
-  constructor() { }
+  @Input()
+  control!: IAbstractControl<any>;
+
+  editMode = false;
+
+  constructor(private changeDetector : ChangeDetectorRef) { }
 
   ngOnInit(): void {
+  }
+
+  click() {
+    this.editMode = true;
+    this.changeDetector.detectChanges();
+    const input = this.value.nativeElement as HTMLInputElement;
+    input.focus();
+  }
+
+  toViewMode() {
+    this.editMode = false;
   }
 
 }

@@ -1,8 +1,13 @@
-<div class="flex flex-col border-2 border-sky-900 rounded-md pr-2 pl-2 pt-1 pb-1">
-    <span class="text-base text-gray-400">
+<div class="flex flex-col border-2 border-gray-500 rounded-md pr-2 pl-2 pt-1 pb-1
+    hover:border-sky-400 cursor-pointer" (click)="click()">
+    <span class="text-gray-400">
         <ng-content></ng-content>
     </span>
-    <span class="text-base">
-        {{value}}
+    <span>
+        <input #value class="max-h-6 bg-gray-600 border-none"  *ngIf="editMode" type="text" 
+        (keyup.enter)="toViewMode()" [formControl]="$any(control)"
+         />
+        <span *ngIf="!editMode">{{control.value}}</span>
     </span>
+
 </div>

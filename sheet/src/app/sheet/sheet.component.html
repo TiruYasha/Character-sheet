@@ -1,5 +1,5 @@
-<div class="flex p-4" *ngIf="sheet$ | async as sheet">
+<div class="flex p-4" *ngIf="formGroup">
     
-    <app-sheet-header [sheet]="sheet"></app-sheet-header>
+    <app-sheet-header [basicInformation]="formGroup.controls.basicInformation"></app-sheet-header>
 
 </div>

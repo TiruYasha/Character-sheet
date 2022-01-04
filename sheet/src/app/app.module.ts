@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SheetComponent } from './sheet/sheet.component';
 import { SheetHeaderComponent } from './sheet/sheet-header/sheet-header.component';
 import { BasicInformationComponent } from './sheet/basic-information/basic-information.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BasicInformationComponent } from './sheet/basic-information/basic-infor
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

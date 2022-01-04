@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Sheet } from '../models/sheet/sheet.model';
+import { FormBuilder, Validators } from '@angular/forms';
+import { BasicInformation, Sheet } from '../models/sheet/sheet.model';
 import { SheetService } from '../services/sheet.service';
+import { IFormGroup, IFormBuilder } from '@rxweb/types';
 
 @Component({
   selector: 'app-sheet',
@@ -9,21 +10,31 @@ import { SheetService } from '../services/sheet.service';
   styleUrls: ['./sheet.component.scss']
 })
 export class SheetComponent implements OnInit {
-  sheet$: Observable<Sheet>;
+  formGroup!: IFormGroup<Sheet>;
+  formBuilder: IFormBuilder;
 
-  constructor(private sheetService: SheetService) { 
-    this.sheet$ = sheetService.changeSheet('test');
+  constructor(private sheetService: SheetService,
+    private fb: FormBuilder) {
+    this.formBuilder = fb;
+
   }
 
   ngOnInit(): void {
-    // this.sheetService.setSheet({
-    //   basicInformation: {
-    //     characterName: 'Henkie wenki',
-    //     level: 1,
-    //     xp: 0
-    //   }
-    // });
 
+    this.sheetService.changeSheet('test')
+      .subscribe(sheet => {
+        this.formGroup = this.formBuilder.group<Sheet>({
+          basicInformation: this.formBuilder.group<BasicInformation>({
+            characterName: sheet.basicInformation.characterName,
+            level: sheet.basicInformation.level,
+            xp: sheet.basicInformation.xp
+          })
+        });
+
+        this.formGroup.valueChanges.subscribe(form => {
+            this.sheetService.setSheet(form as Sheet);
+        });
+
+      });
   }
-
 }

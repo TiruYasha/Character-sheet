@@ -2,9 +2,9 @@
     <div class="flex flex-col">
         <div>
             <div class="flex gap-1">
-                <app-basic-information [value]="sheet.basicInformation.level.toString()">Level</app-basic-information>
-                <app-basic-information [value]="sheet.basicInformation.xp.toString()">XP</app-basic-information>
-                <app-basic-information [value]="sheet.basicInformation.characterName">Character Name</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.level">Level</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.xp">XP</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.characterName">Character Name</app-basic-information>
             </div>
             <div>
                 Ability scores
