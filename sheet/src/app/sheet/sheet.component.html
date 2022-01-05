@@ -1,5 +1,9 @@
-<div class="flex p-4" *ngIf="formGroup">
-    
-    <app-sheet-header [basicInformation]="formGroup.controls.basicInformation"></app-sheet-header>
+<div class="flex p-2 flex-col gap-2" *ngIf="formGroup">
 
+    <div class="bg-slate-800 p-2 rounded-md">
+        <app-sheet-header [basicInformation]="formGroup.controls.basicInformation"
+            [abilityScoreInformation]="$any(formGroup.controls.abilityScoreInformation)"></app-sheet-header>
+    </div>
+
+    <app-sheet-content [form]="formGroup"></app-sheet-content>
 </div>

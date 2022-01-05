@@ -23,10 +23,9 @@ export class SheetService {
     return this.sheetSubject.asObservable();
   }
 
-  setSheet(sheet: Sheet): void {
+  saveSheet(sheet: Sheet): void {
     this.sheet = sheet;
     this.localstorageService.SetItem('test', sheet);
-    this.sheetSubject.next(sheet);
   }
 
 }

@@ -1,13 +1,19 @@
 <div class="flex gap-4">
     <div class="flex flex-col">
-        <div>
+        <div class="flex flex-col gap-2">
             <div class="flex gap-1">
                 <app-basic-information [control]="basicInformationFormGroup.controls.level">Level</app-basic-information>
                 <app-basic-information [control]="basicInformationFormGroup.controls.xp">XP</app-basic-information>
                 <app-basic-information [control]="basicInformationFormGroup.controls.characterName">Character Name</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.ancestry">Ancestry</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.heritage">Heritage</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.background">Background</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.class">Class</app-basic-information>
             </div>
-            <div>
-                Ability scores
+            <div class="flex gap-1">
+                <app-basic-information [control]="basicInformationFormGroup.controls.size">Size</app-basic-information>
+                <app-basic-information [control]="basicInformationFormGroup.controls.speed">Speed</app-basic-information>
+                <app-abilityscore-information [abilityScoreInformation]="abilityScoreInformation"></app-abilityscore-information>
             </div>
         </div>
         <div>
